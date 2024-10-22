@@ -12,6 +12,5 @@ __pycache__/
 *$py.clas
 
 # Ignore inventory files
-inventory/
-*/inventory.yaml
-*/inventory.yml
+**/inventory.yaml
+**/inventory.yml
