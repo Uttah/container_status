@@ -1,0 +1,6 @@
+docker
+aiohttp
+asyncio
+pyyaml 
+requests 
+pydantic

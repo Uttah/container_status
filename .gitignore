@@ -1,0 +1,17 @@
+# Ignore virtual environment directories
+venv/
+*/venv/
+
+# Ignore config.yaml on any level
+config.yaml
+**/config.yaml
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.clas
+
+# Ignore inventory files
+inventory/
+*/inventory.yaml
+*/inventory.yml

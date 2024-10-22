@@ -1,0 +1,25 @@
+---
+- name: Copy src directory recursively
+  synchronize:
+    src: "../../../src/"
+    dest: "{{ folder_path }}/src/"
+    recursive: yes
+
+- name: Copy files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: "../../../Dockerfile", dest: "{{ folder_path }}/Dockerfile" }
+    - { src: "../../../requirements.txt", dest: "{{ folder_path }}/requirements.txt" }
+    - { src: "../../../main.py", dest: "{{ folder_path }}/main.py" }
+    - { src: "../../../Makefile", dest: "{{ folder_path }}/Makefile" }
+    - { src: "../../../config.yaml", dest: "{{ folder_path }}/config.yaml" }
+
+- name: Build docker image
+  community.docker.docker_image:
+    build:
+      path: "{{ folder_path }}"
+    name: "{{ repo_name }}/{{ image_name }}"
+    tag: "{{ tag }}"
+    source: build

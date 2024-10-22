@@ -1,0 +1,17 @@
+---
+- name: Ensure container is stopped
+  community.docker.docker_container:
+    name: "{{ container_name }}"
+    state: absent
+
+- name: Deploy image
+  community.docker.docker_container:
+    name: "{{ container_name }}"
+    image: "{{ repo_name }}/{{ image_name }}:{{ tag }}"
+    state: started
+    ports:
+      - "28090:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    env:
+      APP_VERSION: "{{ tag }}"
