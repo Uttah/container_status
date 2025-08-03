@@ -16,6 +16,7 @@ info:
 deploy:
 	cd deploy && \
 		./deploy.yaml \
+			-l $(TARGET) \
 			-e repo_name=$(REPO_NAME) \
 			-e image_name=$(IMAGE_NAME) \
 			-e tag=$(VERSION) \
